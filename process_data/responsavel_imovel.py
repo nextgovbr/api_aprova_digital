@@ -61,7 +61,7 @@ def _dados_um_resp(respo):
         #NÃO CONSEGUI IDENTIFICAR NENHUM PROCESSO COM INFORMAÇÃO DE TELEFONE DO RESP
         b_resp('telefone',
                'Telefone do responsável pelo imóvel',
-               'Informação Não Disponível'))
+               'Informação Não Disponível')
     ]
 
     return dados
