@@ -1,3 +1,5 @@
+from .connect import gen_db
+
 class MyFlag:
     '''Just a flag so I can manage default args better'''
 
