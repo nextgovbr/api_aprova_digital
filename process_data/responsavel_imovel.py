@@ -1,3 +1,5 @@
+from utilities.my_tools import b_resp
+
 def _build_address_respo(respo):
     '''Build address info by parsing address related keys'''
 
@@ -56,9 +58,10 @@ def _dados_um_resp(respo):
                'CEP do responsável pelo imóvel',
                respo.get_m(['cep_proprietario'], None)),
 
+        #NÃO CONSEGUI IDENTIFICAR NENHUM PROCESSO COM INFORMAÇÃO DE TELEFONE DO RESP
         b_resp('telefone',
                'Telefone do responsável pelo imóvel',
-               respo.get_m(['NAO ACHEI INFO'], None))
+               'Informação Não Disponível'))
     ]
 
     return dados
