@@ -32,3 +32,13 @@ class FlexKeyDict(dict):
             if verbose:
                 print(f'{keys} not found in {repr(self)}')
             return not_found
+
+#####################################__Other Tools__#########################################
+
+def b_resp(label, desc, value):
+    '''Buils API resp on system specific format'''
+
+    return {'label': label,
+            'description': desc,
+            'value': value}
+
