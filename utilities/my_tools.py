@@ -9,7 +9,7 @@ class FlexKeyDict(dict):
     def recursive_conversion(self, item):
 
         if type(item) is dict:
-            return my_dict(item)
+            return FlexKeyDict(item)
 
         elif type(item) is list or type(item) is tuple:
             parsed_list = []
@@ -28,7 +28,7 @@ class FlexKeyDict(dict):
                 return self.recursive_conversion(resp)
         else:
             if not_found is MyFlag:
-                not_found = my_dict()
+                not_found = FlexKeyDict()
             if verbose:
                 print(f'{keys} not found in {repr(self)}')
             return not_found
@@ -49,6 +49,6 @@ def get_proc_aleatorio():
     db = gen_db()
     p = list(db.process.aggregate([{'$sample': {'size': 1}}]))[0]
 
-    p = my_dict(p)
+    p = FlexKeyDict(p)
 
     return p
