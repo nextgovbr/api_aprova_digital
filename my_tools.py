@@ -42,3 +42,13 @@ def b_resp(label, desc, value):
             'description': desc,
             'value': value}
 
+
+def get_proc_aleatorio():
+    '''Gets a random process data for testing and prototyping'''
+
+    db = gen_db()
+    p = list(db.process.aggregate([{'$sample': {'size': 1}}]))[0]
+
+    p = my_dict(p)
+
+    return p
