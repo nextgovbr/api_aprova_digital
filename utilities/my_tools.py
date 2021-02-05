@@ -86,3 +86,20 @@ def get_proc(proc_num, raise_ = True):
         raise ProcessNotFound(f'Processo {proc_num} não encontrado')
 
     return FlexKeyDict()
+
+
+def dict_resp(resp):
+    parsed = {}
+    for item in resp:
+        parsed[item['label']] = item['value']
+
+    return parsed
+
+
+def dict_resp_multiple(resp):
+    parsed = []
+
+    for item in resp:
+        parsed.append(dict_resp(item))
+
+    return parsed
