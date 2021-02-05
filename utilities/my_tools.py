@@ -1,6 +1,6 @@
 import re
 from .connect import gen_db
-from .proj_exceptions import ProcessoForadoPadrao
+from .proj_exceptions import ProcessoForadoPadrao, ProcessNotFound
 
 class MyFlag:
     '''Just a flag so I can manage default args better'''
@@ -81,5 +81,8 @@ def get_proc(proc_num, raise_ = True):
     p = db.process.find_one({'nP': proc_num})
     if p:
         return FlexKeyDict(p)
+
+    if p is None and raise_:
+        raise ProcessNotFound(f'Processo {proc_num} não encontrado')
 
     return FlexKeyDict()
