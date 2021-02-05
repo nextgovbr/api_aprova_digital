@@ -1,5 +1,7 @@
 #proj-specific ignores
 config.py
+anotacoes_proj.docx
+prototipagem.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
