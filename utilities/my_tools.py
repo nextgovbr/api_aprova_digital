@@ -1,3 +1,4 @@
+import re
 from .connect import gen_db
 from .proj_exceptions import ProcessoForadoPadrao
 
@@ -63,11 +64,12 @@ def regex_check_proc(proc_num, raise_=True):
 
     clean = proc_num.replace('#', '')
     clean = clean.upper().strip()
+    patt = "^\d*-\d\d-SP-NEW$"
 
-    match = re.match("^\d*-\d\d-SP-NEW$", clean)
+    match = re.match(patt, clean)
 
     if not match and raise_:
-        raise ProcessoForadoPadrao(num_proc)
+        raise ProcessoForadoPadrao(f'Numero informado {proc_num} está fora do padrão {patt}')
 
     return match.group()
 
