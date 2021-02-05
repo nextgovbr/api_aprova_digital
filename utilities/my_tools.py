@@ -54,3 +54,13 @@ def get_proc_aleatorio():
     p = FlexKeyDict(p)
 
     return p
+
+
+def get_proc(proc_num):
+
+    db = gen_db()
+    p = db.process.find_one({'nP': proc_num})
+    if p:
+        return FlexKeyDict(p)
+
+    return FlexKeyDict()
