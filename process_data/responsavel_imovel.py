@@ -1,4 +1,5 @@
 from utilities.my_tools import b_resp
+from utilities.proj_decorators import json_resp
 
 def _build_address_respo(respo):
     '''Build address info by parsing address related keys'''
@@ -66,8 +67,8 @@ def _dados_um_resp(respo):
 
     return dados
 
-
-def dados_resps_imovel(proc):
+@json_resp(list = True)
+def dados_resps_imovel(proc, *args, json_alike = True):
     '''Get's info for all building owners'''
 
     resps_imovel = proc.get_m(['last_version']) \

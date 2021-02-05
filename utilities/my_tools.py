@@ -1,4 +1,5 @@
 import re
+import inspect
 from .connect import gen_db
 from .proj_exceptions import ProcessoForadoPadrao, ProcessNotFound
 
@@ -96,10 +97,17 @@ def dict_resp(resp):
     return parsed
 
 
-def dict_resp_multiple(resp):
+def dict_resp_list(resp):
     parsed = []
 
     for item in resp:
         parsed.append(dict_resp(item))
 
     return parsed
+
+def hack_get_default_param(func, param_name):
+
+    sig = inspect.signature(func)
+    val = sig.parameters[param_name].default
+
+    return val
