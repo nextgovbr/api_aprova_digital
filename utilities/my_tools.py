@@ -74,9 +74,9 @@ def regex_check_proc(proc_num, raise_=True):
     return match.group()
 
 
-def get_proc(proc_num):
+def get_proc(proc_num, raise_ = True):
 
-    proc_num = regex_check_proc(proc_num)
+    proc_num = regex_check_proc(proc_num, raise_)
     db = gen_db()
     p = db.process.find_one({'nP': proc_num})
     if p:
