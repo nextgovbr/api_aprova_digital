@@ -1,4 +1,5 @@
 from .connect import gen_db
+from .proj_exceptions import ProcessoForadoPadrao
 
 class MyFlag:
     '''Just a flag so I can manage default args better'''
@@ -56,8 +57,24 @@ def get_proc_aleatorio():
     return p
 
 
+def regex_check_proc(proc_num, raise_=True):
+    '''Test if proc_num is on the right pattern and also
+    cleans it if it is'''
+
+    clean = proc_num.replace('#', '')
+    clean = clean.upper().strip()
+
+    match = re.match("^\d*-\d\d-SP-NEW$", clean)
+
+    if not match and raise_:
+        raise ProcessoForadoPadrao(num_proc)
+
+    return match.group()
+
+
 def get_proc(proc_num):
 
+    proc_num = regex_check_proc(proc_num)
     db = gen_db()
     p = db.process.find_one({'nP': proc_num})
     if p:
